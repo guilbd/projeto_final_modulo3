@@ -23,6 +23,7 @@ const connectToDb = () => {
   const dbChar = process.env.DB_CHAR;
   const connectionString = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.${dbChar}.mongodb.net/${dbName}?retryWrites=true&w=majority`;
   const options = {
+    useNewUrlParser: true,
     useUnifiedTopology: true,
   };
   const client = new mongodb.MongoClient(connectionString, options);
