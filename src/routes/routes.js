@@ -11,6 +11,7 @@ routes.get(
   PersonagemController.getById
 );
 routes.post("/personagens", PersonagemController.create);
+
 routes.put(
   "/personagens/:id",
   PersonagemMiddleware.validaId,

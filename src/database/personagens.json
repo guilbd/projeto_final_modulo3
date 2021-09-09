@@ -1,0 +1,131 @@
+[{
+  "_id": {
+    "$oid": "6139fafccf211f99e499e635"
+  },
+  "nome": "Homer Jay Simpson",
+  "familia": "Simpson",
+  "ocupacao": "Técnico Nuclear",
+  "epPrimeiraAparicao": "Episódio - Good Night",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/b/bd/Homer_Simpson.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fb85cf211f99e499e63a"
+  },
+  "nome": "Marge Simpson",
+  "familia": "Simpson",
+  "ocupacao": "Dona de casa",
+  "epPrimeiraAparicao": "Episódio - Good Night",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/4/4d/MargeSimpson.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fbc3cf211f99e499e63c"
+  },
+  "nome": "Bartholomew 'Bart' JoJo Simpson",
+  "familia": "Simpson",
+  "ocupacao": "Estudante",
+  "epPrimeiraAparicao": "Episódio - Good Night",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/6/65/Bart_Simpson.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fbe6cf211f99e499e63e"
+  },
+  "nome": "Lisa Marie Simpson",
+  "familia": "Simpson",
+  "ocupacao": "Estudante",
+  "epPrimeiraAparicao": "Episódio - Good Night",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/d/d5/Lisa_Simpson_official.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fc2dcf211f99e499e640"
+  },
+  "nome": "Margaret 'Maggie' Evelyn Lenny Simpson",
+  "familia": "Simpson",
+  "ocupacao": "nenhuma",
+  "epPrimeiraAparicao": "Episódio - Good Night",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/9/9d/Maggie_Simpson.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fc8fcf211f99e499e642"
+  },
+  "nome": "Abraham Jebediah 'Abe' Simpson II",
+  "familia": "Simpson",
+  "ocupacao": "aposentado",
+  "epPrimeiraAparicao": "Episódio - Grandpa and the Kids",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/a/a9/Abraham_Simpson.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fe6ecf211f99e499e655"
+  },
+  "nome": "Mona Penelope Simpson",
+  "familia": "Simpson",
+  "ocupacao": "falecida",
+  "epPrimeiraAparicao": "Episódio - Oh Brother, Where Art Thou?",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/5/52/IMG_1693.PNG",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fec3cf211f99e499e657"
+  },
+  "nome": "Patricia 'Patty'  Maleficent Bouvier",
+  "familia": "Bouvier",
+  "ocupacao": "Departamento de Trânsito de Springfield",
+  "epPrimeiraAparicao": "Episódio - Simpsons Roasting on an Open Fire",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/d/d5/Patty_Bouvier1.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139fefecf211f99e499e659"
+  },
+  "nome": "Selma Bouvier-Terwilliger-Hutz-McClure-Discothèque-Simpson-D'Amico",
+  "familia": "Bouvier",
+  "ocupacao": "Departamento de Trânsito de Springfield",
+  "epPrimeiraAparicao": "Episódio - Simpsons Roasting on an Open Fire",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/5/54/Temp.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139ff55cf211f99e499e65b"
+  },
+  "nome": "Ajudante de Papai Noel",
+  "familia": "Simpson",
+  "ocupacao": "PET",
+  "epPrimeiraAparicao": "Episódio - Simpsons Roasting on an Open Fire",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/2/2c/Santa%27s_Little_Helper.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139ff90cf211f99e499e65d"
+  },
+  "nome": "Bola de Neve V",
+  "familia": "Simpson",
+  "ocupacao": "PET",
+  "epPrimeiraAparicao": "Episódio - I, (Annoyed Grunt)-Bot",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/d/db/Snowball_V.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6139ffd1cf211f99e499e65f"
+  },
+  "nome": "Bola de Neve III",
+  "familia": "Simpson",
+  "ocupacao": "PET",
+  "epPrimeiraAparicao": "Episódio - Simpsons Roasting on an Open Fire",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/0/08/Unlock_snowball2.png",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "613a000acf211f99e499e661"
+  },
+  "nome": "Bola de Neve I",
+  "familia": "Simpson",
+  "ocupacao": "PET",
+  "epPrimeiraAparicao": "Episódio - Bart Gets Hit by a Car",
+  "imagem": "https://static.wikia.nocookie.net/simpsons/images/b/b0/Snowball_I_Tapped_Out.png",
+  "__v": 0
+}]
