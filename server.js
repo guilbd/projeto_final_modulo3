@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const connectToDb = require("./src/database/database")
+const { connectToDb,db, personagens} = require("./src/database/database")
 const routes = require("./src/routes/routes")
 
 connectToDb();

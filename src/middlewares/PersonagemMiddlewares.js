@@ -1,19 +1,18 @@
-const mongoose = require("mongoose");
-const Personagem = require("../models/Personagem");
+// const Personagem = require("../models/Personagem");
+const {personagens, ObjectId}  = require("../database/database");
 
 const validaId = async (req, res, next) => {
-  const { id } = req.params;
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    res.status(400).send({ error: "Id inválido" });
-    return;
-  }
-
+  const id = req.params.id;
+  console.log(id);
   try {
-    const personagem = await Personagem.findById(id);
+    const personagem = await personagens.findOne({ _id: ObjectId(id) });
+    
     if (!personagem) {
-      return res.status(404).send({ msg: "Personagem não encontrado" });
+      res.status(400).send({ error: "Id inválido" });
+      return;
     }
-    res.personagem = personagem;
+
+    res.send(personagem);
   } catch (err) {
     return res.status(500).send({ error: err });
   }
