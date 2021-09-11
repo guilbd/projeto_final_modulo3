@@ -21,9 +21,9 @@ exports.getById = async (req, res) => {
       res.status(404).json({ message: "Personagem não encontrado" });
       return;
     }
-    return res.send({ personagem });
+    return res.send( findPersonagem );
   } catch (err) {
-    res.status(500).send({ error: err });
+    res.status(500);
   }
 };
 
@@ -65,7 +65,7 @@ exports.update = async (req, res) => {
     !objeto.imagem
   ) {
     res.status(404).send({
-      message: "Você não enviou todos os dados necessários para o cadastro",
+      message: "Você não enviou todos os dados necessários para o cadastro"
     });
     return;
   }
@@ -78,20 +78,22 @@ exports.update = async (req, res) => {
     res.status(500).send({ error: "Personagem não encontrado!!" });
     return;
   }
-
+ 
   try {
-    const result = await personagens.updateOne(
+   const result = await personagens.updateOne(
       {
         _id: ObjectId(id),
       },
       {
         $set: objeto,
-      }
-    );
-    res.send({ message: "Personagem alterado com sucesso!", objeto });
-  } catch (err) {
-    res.status(500).send({ error: err });
-  }
+      } );
+    res.status(200);
+   
+    
+   } catch (err) {
+     return res.status(500);
+    
+   }
 };
 
 exports.del = async (req, res) => {
