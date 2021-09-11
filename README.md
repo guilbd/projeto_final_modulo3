@@ -1,13 +1,10 @@
 # API Simpsons
 
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/The_logo_simpsons_yellow.svg/800px-The_logo_simpsons_yellow.png" alt="imagem dos Simpsons" style="zoom:50%" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/The_logo_simpsons_yellow.svg/800px-The_logo_simpsons_yellow.png" alt="imagem dos Simpsons" style="zoom:0%" />
 
 > API criada para trabalho de conclusão de módulo na Blue Edtech, para conceitos de backend, utilizando a lisnguagem de programação JavaScript e o banco de dados MongoDB. Nessa API foi criado um CRUD completo de personagens da série "Os Simpsons".
 
-<br/>
-
-><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png" alt="Logo JavaScript" style="zoom:10%"/>   <img src="https://nodejs.org/static/images/logo.svg" alt="Logo JavaScript" style="zoom:12%"/>   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original-wordmark.svg" alt="Logo MongoDB" height=50px/>
 
 Para utilizar o projeto faça o download do arquivo zip, ou faça o clone em seu computador utilizando o Git. Execute o comando `npm i` dentro da pasta do projeto em seu computador (a pasta que contém o arquivo packge.json), para baixar as dependencias do projeto.
 
