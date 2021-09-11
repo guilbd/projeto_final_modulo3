@@ -4,7 +4,6 @@ const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbName = process.env.DB_NAME;
 const dbChar = process.env.DB_CHAR;
-const dbCollection = process.env.COLLECTION;
 const connectionString = `mongodb+srv://${dbUser}:${dbPassword}@cluster0.${dbChar}.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 const options = {
   useNewUrlParser: true,
@@ -20,10 +19,9 @@ const connectToDb = async () => {
     console.log(err);
   }
 };
+
 const db = client.db('db_simpsons');
 const personagens = db.collection('personagens');
-
-// module.exports = { conexao,db, personagens};
 
 module.exports = {
   connectToDb,

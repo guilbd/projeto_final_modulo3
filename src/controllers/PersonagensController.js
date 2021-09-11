@@ -1,6 +1,4 @@
 const {
-  connectToDb,
-  db,
   personagens,
   ObjectId,
 } = require("../database/database");
@@ -118,3 +116,44 @@ exports.del = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
+
+exports.filterByName = async (req, res) => {
+  const nome = req.query.nome;
+  if (!nome) {
+    res.status(400).send({ erro: "Parametro não recebido" });
+    return;
+  }
+  try {
+    const personagem = await personagens.find( { nome: { $regex: `${nome}`, $options: "i" } }).toArray();
+    return res.send({ personagem });
+  } catch (err) {
+    return res.status(500).send({ erro: err.message });
+  }
+};
+
+exports.filterAll = async (req, res) => {
+  let { nome, familia, ocupacao, epPrimeiraAparicao} = req.query;
+
+  !nome ? (nome = "") : (nome = nome);
+  !familia ? (familia = "") : (familia = familia);
+  !ocupacao ? (ocupacao = "") : (ocupacao = ocupacao);
+  !epPrimeiraAparicao ? (epPrimeiraAparicao = "") : (epPrimeiraAparicao = epPrimeiraAparicao);
+  // !imagem ? (imagem = "") : (imagem = imagem);
+
+  try {
+    const personagem = await personagens.find({
+      nome: { $regex: `${nome}`, $options: 'i' },
+      familia: { $regex: `${familia}`, $options: 'i'},
+      ocupacao: { $regex: `${ocupacao}`, $options: 'i'},
+      epPrimeiraAparicao: { $regex: `${epPrimeiraAparicao}`, $options: 'i'}
+      // imagem: { $regex: `${imagem}`}
+    }).toArray();
+
+    if (personagem.length === 0)
+      return res.status(404).send({ erro: "Personagem não encontrado" });
+
+    return res.send({ personagem });
+  } catch (err) {
+    return res.status(500).send({ error: err.message });
+  }
+}

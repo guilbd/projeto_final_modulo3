@@ -5,6 +5,7 @@ const PersonagemController = require("../controllers/PersonagensController");
 const PersonagemMiddleware = require("../middlewares/PersonagemMiddlewares");
 
 routes.get("/personagens", PersonagemController.getAll);
+
 routes.get(
   "/personagens/:id",
   PersonagemMiddleware.validaId,
@@ -22,5 +23,9 @@ routes.delete(
   PersonagemMiddleware.validaId,
   PersonagemController.del
 );
+
+routes.get("/filterByName", PersonagemController.filterByName);
+
+routes.get("/filterAll", PersonagemController.filterAll);
 
 module.exports = routes;
