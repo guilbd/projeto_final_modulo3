@@ -1,27 +1,33 @@
-const {
-  personagens,
-  ObjectId,
-} = require("../database/database");
+const { personagens, ObjectId } = require("../database/database");
+const valid = (id) => {
+  if (!ObjectId.isValid(id)) {
+    return "Id inválido";
+  }
+};
 
 exports.getAll = async (req, res) => {
   try {
     const personagemFind = await personagens.find({}).toArray();
-    return res.send({ personagemFind });
+    !personagemFind.length === 0
+      ? res.status(404).json({ message: "não existem personagens cadastrados" })
+      : res.status(200).json(personagemFind);
   } catch (err) {
-    res.status(500).send({ error: err });
+    res.status(500).send({ error: err.message });
   }
 };
 
 exports.getById = async (req, res) => {
   const id = req.params.id;
-
+  const validado = valid(id);
+  if (validado) {
+    res.status(400).json({ erro: validado });
+    return;
+  }
   try {
     const findPersonagem = await personagens.findOne({ _id: ObjectId(id) });
-    if (!findPersonagem) {
-      res.status(404).json({ message: "Personagem não encontrado" });
-      return;
-    }
-    return res.send( findPersonagem );
+    findPersonagem
+      ? res.status(200).json(findPersonagem)
+      : res.status(404).json({ message: "Personagem não encontrado" });
   } catch (err) {
     res.status(500);
   }
@@ -65,9 +71,8 @@ exports.update = async (req, res) => {
     !objeto.imagem
   ) {
     res.status(404).send({
-      message: "Você não enviou todos os dados necessários para o cadastro"
+      message: "Você não enviou todos os dados necessários para o cadastro",
     });
-    return;
   }
 
   const qntPersonagens = await personagens.countDocuments({
@@ -76,24 +81,24 @@ exports.update = async (req, res) => {
 
   if (qntPersonagens !== 1) {
     res.status(500).send({ error: "Personagem não encontrado!!" });
-    return;
   }
- 
+
   try {
-   const result = await personagens.updateOne(
+    const result = await personagens.updateOne(
       {
         _id: ObjectId(id),
       },
       {
         $set: objeto,
-      } );
-    res.status(200);
-   
-    
-   } catch (err) {
-     return res.status(500);
-    
-   }
+      }
+    );
+    if (result.acknowledged === false) {
+      res.status(500).send({ error: "Ocorreu um erro" });
+    }
+    res.status(200).json(objeto);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
 exports.del = async (req, res) => {
@@ -126,7 +131,9 @@ exports.filterByName = async (req, res) => {
     return;
   }
   try {
-    const personagem = await personagens.find( { nome: { $regex: `${nome}`, $options: "i" } }).toArray();
+    const personagem = await personagens
+      .find({ nome: { $regex: `${nome}`, $options: "i" } })
+      .toArray();
     return res.send({ personagem });
   } catch (err) {
     return res.status(500).send({ erro: err.message });
@@ -134,22 +141,26 @@ exports.filterByName = async (req, res) => {
 };
 
 exports.filterAll = async (req, res) => {
-  let { nome, familia, ocupacao, epPrimeiraAparicao} = req.query;
+  let { nome, familia, ocupacao, epPrimeiraAparicao } = req.query;
 
   !nome ? (nome = "") : (nome = nome);
   !familia ? (familia = "") : (familia = familia);
   !ocupacao ? (ocupacao = "") : (ocupacao = ocupacao);
-  !epPrimeiraAparicao ? (epPrimeiraAparicao = "") : (epPrimeiraAparicao = epPrimeiraAparicao);
+  !epPrimeiraAparicao
+    ? (epPrimeiraAparicao = "")
+    : (epPrimeiraAparicao = epPrimeiraAparicao);
   // !imagem ? (imagem = "") : (imagem = imagem);
 
   try {
-    const personagem = await personagens.find({
-      nome: { $regex: `${nome}`, $options: 'i' },
-      familia: { $regex: `${familia}`, $options: 'i'},
-      ocupacao: { $regex: `${ocupacao}`, $options: 'i'},
-      epPrimeiraAparicao: { $regex: `${epPrimeiraAparicao}`, $options: 'i'}
-      // imagem: { $regex: `${imagem}`}
-    }).toArray();
+    const personagem = await personagens
+      .find({
+        nome: { $regex: `${nome}`, $options: "i" },
+        familia: { $regex: `${familia}`, $options: "i" },
+        ocupacao: { $regex: `${ocupacao}`, $options: "i" },
+        epPrimeiraAparicao: { $regex: `${epPrimeiraAparicao}`, $options: "i" },
+        // imagem: { $regex: `${imagem}`}
+      })
+      .toArray();
 
     if (personagem.length === 0)
       return res.status(404).send({ erro: "Personagem não encontrado" });
@@ -158,4 +169,4 @@ exports.filterAll = async (req, res) => {
   } catch (err) {
     return res.status(500).send({ error: err.message });
   }
-}
+};

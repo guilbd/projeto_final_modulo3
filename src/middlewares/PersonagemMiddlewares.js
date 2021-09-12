@@ -1,22 +1,21 @@
-// const Personagem = require("../models/Personagem");
-const {personagens, ObjectId}  = require("../database/database");
+require("express-async-errors");
 
-const validaId = async (req, res, next) => {
-  const id = req.params.id;
-  console.log(id);
-  try {
-    const personagem = await personagens.findOne({ _id: ObjectId(id) });
-    
-    if (!personagem) {
-      res.status(400).send({ error: "Id inválido" });
-      return;
-    }
-
-    res.send(personagem);
-  } catch (err) {
-    return res.status(500).send({ error: err });
-  }
-  next();
+const validarEndpoint = (req, res) =>{
+  res.status(404).send({ message: "Endpoint was not found" });
 };
 
-module.exports = { validaId };
+const tratarErros = (error, req, res, next) =>{
+  res.status(error.status || 500).json({
+    error:{ 
+      status:error.status || 500,
+      message:error.message || "Erro interno do servidor"
+    },
+
+});
+next();
+};
+
+module.exports = {
+  validarEndpoint,
+  tratarErros
+}
