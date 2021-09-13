@@ -1,10 +1,14 @@
+//importação do BD e ObjectId 
 const { personagens, ObjectId } = require("../database/database");
+
+//Função que valida o ID do objeto solicitado (se tem tamanho válido ou está correto)
 const valid = (id) => {
   if (!ObjectId.isValid(id)) {
     return "Id inválido";
   }
 };
 
+//Controller das rotas
 exports.getAll = async (req, res) => {
   try {
     const personagemFind = await personagens.find({}).toArray();
